@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    #DOCKERHUB_CREDENTIALS = credentials('dockerhub')
                 }
         stages {
             stage('Docker Stop, Remove, Build and Run') {
