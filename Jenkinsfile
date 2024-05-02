@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-    #DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    //DOCKERHUB_CREDENTIALS = credentials('dockerhub')
                 }
         stages {
             stage('Docker Stop, Remove, Build and Run') {
@@ -13,12 +13,12 @@ pipeline {
                 sh 'docker run --name orbit -d -p 80:80 lgandzii/orbit'
                 }
                                  }
-            #stage('Dockerhub') {
-            #    agent any
-            #    steps {
-            #    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            #    sh 'docker push lgandzii/orbit:latest'
-            #    }
-            #    }
+            /* stage('Dockerhub') {
+                agent any
+                steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push lgandzii/orbit:latest'
+                }
+                } */
          }
 }
