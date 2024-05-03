@@ -10,8 +10,9 @@ pipeline {
                 sh 'if [ $(docker ps -aq) ]; then docker ps -aq | xargs docker stop;fi'
                 sh 'docker system prune -af --volumes'
                 sh 'docker build . -t lgandzii/orbit -f Dockerfile'
-                sh 'kubectl create deployment --image=lgandzii/orbit orbit'
-                sh 'kubectl expose deployment orbit --port=80 --name=orbit-http'
+                sh 'kubectl config view'
+                //sh 'kubectl create deployment --image=lgandzii/orbit orbit'
+                //sh 'kubectl expose deployment orbit --port=80 --name=orbit-http'
                 }
                                  }
              stage('Dockerhub') {
