@@ -12,7 +12,6 @@ pipeline {
                 sh 'docker build . -t lgandzii/orbit -f Dockerfile'
                 sh 'kubectl create deployment --image=lgandzii/orbit orbit'
                 sh 'kubectl expose deployment orbit --port=80 --name=orbit-http'
-                sh 'kubectl patch svc orbit-http -p '{"spec": {"type": "NodePort"}}''
                 }
                                  }
              stage('Dockerhub') {
