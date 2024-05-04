@@ -80,7 +80,8 @@ inline = [
 "sudo apt-get install -y kubectl kubeadm kubelet",
 "git clone  https://github.com/lgandzii/orbit",
 "sudo ansible-playbook orbit/install-jenkins-ubuntu.yaml",
-"sudo cat /var/lib/jenkins/secrets/initialAdminPassword > jenkinspass.txt"
+"sudo cat /var/lib/jenkins/secrets/initialAdminPassword > jenkinspass.txt",
+“sudo chmod 777 /var/run/docker.sock” 
 ]
 }
 connection {
