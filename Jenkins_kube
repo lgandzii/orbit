@@ -7,8 +7,7 @@ pipeline {
             stage('Docker Stop, Remove, Build and Run') {
                 agent any
             steps {
-                sh 'if [ $(docker ps -aq) ]; then docker ps -aq | xargs docker stop;fi'
-                sh 'docker system prune -af --volumes'
+                sh 'kubectl delete deployments.apps orbit ; kubectl delete ep orbit-http ; kubectl delete svc orbit-http'
                 sh 'docker build . -t lgandzii/orbit -f Dockerfile'
                 sh 'kubectl create deployment --image=lgandzii/orbit orbit'
                 sh 'kubectl expose deployment orbit --port=80 --name=orbit-http'
